@@ -38,7 +38,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dd-5e-italiano.fandom.com/it/wiki/" + spell).get();
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
@@ -61,7 +61,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dd-5e-italiano.fandom.com/it/wiki/Tutti_gli_Incantesimi").get();
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/Tutti_gli_Incantesimi").get();
 
             SpellBook spellBook = spellBookService.setValuesByCssQuery(doc, "table td a");
 
