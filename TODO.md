@@ -1,0 +1,1 @@
+## creare controller custom per incantesimi con "/" (es. Antipatia/Simpatia)
