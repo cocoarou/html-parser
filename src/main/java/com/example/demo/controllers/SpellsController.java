@@ -31,7 +31,7 @@ public class SpellsController {
     @Autowired
     private SpellBookService spellBookService;
 
-    // custom controllers for spells with a slash in the name
+    // begin custom controllers for spells with a slash in the name
     @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
     @ResponseBody
     public String antipatiaSimpatia() {
@@ -57,6 +57,59 @@ public class SpellsController {
 
         return "errore";
     }
+
+    @RequestMapping(value = "/spells/Cecità/Sordità", method = RequestMethod.GET)
+    @ResponseBody
+    public String cecitaSordita() {
+
+        String spell = "Cecità/Sordità";
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+
+            Spell s = spellService.setValuesById(doc, "mw-content-text");
+
+            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
+
+            return printService.separateSpellDetails(s);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "errore";
+    }
+
+    @RequestMapping(value = "/spells/Ingrandire/Ridurre", method = RequestMethod.GET)
+    @ResponseBody
+    public String ingrandireRidurre() {
+
+        String spell = "Ingrandire/Ridurre";
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+
+            Spell s = spellService.setValuesById(doc, "mw-content-text");
+
+            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
+
+            return printService.separateSpellDetails(s);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "errore";
+    }
+    // end custom controllers for spells with a slash in the name
 
     @RequestMapping(value = "/spells/{spell}", method = RequestMethod.GET)
     @ResponseBody
