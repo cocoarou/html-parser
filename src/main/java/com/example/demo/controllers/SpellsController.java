@@ -2,9 +2,9 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Spell;
 import com.example.demo.models.SpellBook;
-import com.example.demo.services.PrintService;
-import com.example.demo.services.SpellBookService;
-import com.example.demo.services.SpellService;
+import com.example.demo.services.impl.PrintService;
+import com.example.demo.services.impl.SpellBookService;
+import com.example.demo.services.impl.SpellService;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,6 +30,33 @@ public class SpellsController {
 
     @Autowired
     private SpellBookService spellBookService;
+
+    // custom controllers for spells with a slash in the name
+    @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
+    @ResponseBody
+    public String antipatiaSimpatia() {
+
+        String spell = "Antipatia/Simpatia";
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+
+            Spell s = spellService.setValuesById(doc, "mw-content-text");
+
+            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
+
+            return printService.separateSpellDetails(s);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "errore";
+    }
 
     @RequestMapping(value = "/spells/{spell}", method = RequestMethod.GET)
     @ResponseBody
@@ -61,7 +88,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/Tutti_gli_Incantesimi").get();
+            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/Tutti_Gli_Incantesimi_del_Gioco").get();
 
             SpellBook spellBook = spellBookService.setValuesByCssQuery(doc, "table td a");
 

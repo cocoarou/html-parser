@@ -1,4 +1,4 @@
-package com.example.demo.services;
+package com.example.demo.services.impl;
 
 import com.example.demo.models.Spell;
 import com.google.gson.Gson;
