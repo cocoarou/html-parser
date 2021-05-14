@@ -20,10 +20,16 @@ public class SpellService {
         Elements ul = document.select("ul");
 
         spell.setSchool(p.get(0).text());
-        spell.setCastTime(ul.get(0).text());
-        spell.setRange(ul.get(1).text());
-        spell.setComponents(ul.get(2).text());
-        spell.setDuration(ul.get(3).text());
+
+        if(ul.size() > 1) {
+            spell.setCastTime(ul.get(0).text());
+            spell.setRange(ul.get(1).text());
+            spell.setComponents(ul.get(2).text());
+            spell.setDuration(ul.get(3).text());
+        } else {
+            String stringToParse = ul.get(0).text();
+            System.out.print(":: stringToParse = " + stringToParse + " :: ");
+        }
 
         for(Integer i = 1; i < p.size(); i++) {
             str += p.get(i).text();
