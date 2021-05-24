@@ -49,7 +49,7 @@ public class SpellsController {
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
             String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
-            return printService.separateSpellDetails(s);
+            return printService.separateSpellDetailsStringBuilder(s, spell);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,7 +75,7 @@ public class SpellsController {
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
             String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
-            return printService.separateSpellDetails(s);
+            return printService.separateSpellDetailsStringBuilder(s, spell);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -101,7 +101,7 @@ public class SpellsController {
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
             String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
-            return printService.separateSpellDetails(s);
+            return printService.separateSpellDetailsStringBuilder(s, spell);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -126,7 +126,7 @@ public class SpellsController {
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
             String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
-            return printService.separateSpellDetails(s);
+            return printService.separateSpellDetailsStringBuilder(s, spell);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -71,4 +71,24 @@ public class PrintService {
 
         return str;
     }
+
+    public String separateSpellDetailsStringBuilder(Spell spell, String spellName) {
+        StringBuilder sb = new StringBuilder();
+            sb.append("<head>");
+                sb.append("<title>" + spellName + "</title>");
+            sb.append("</head>");
+            sb.append("<body>");
+                sb.append("<div>");
+                    sb.append("<ul>");
+                        sb.append("<li>" + spell.getSchool() + "</li>");
+                        sb.append("<li>" + spell.getCastTime() + "</li>");
+                        sb.append("<li>" + spell.getRange() + "</li>");
+                        sb.append("<li>" + spell.getComponents() + "</li>");
+                        sb.append("<li>" + spell.getDuration() + "</li>");
+                        sb.append("<li>" + spell.getDescription().replace(".", "</br>") + "</li>");
+                    sb.append("</ul>");
+                sb.append("</div>");
+            sb.append("</body>");
+        return sb.toString();
+    }
 }
