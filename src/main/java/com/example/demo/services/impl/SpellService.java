@@ -23,8 +23,8 @@ public class SpellService {
 
         spell.setSchool(p.get(0).text());
 
-        // old layout
         if(ul.size() > 1) {
+            // old layout
             spell.setCastTime(ul.get(0).text());
             spell.setRange(ul.get(1).text());
             spell.setComponents(ul.get(2).text());
