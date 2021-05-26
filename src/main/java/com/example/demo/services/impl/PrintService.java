@@ -57,7 +57,7 @@ public class PrintService {
         return gson.toJson(je);
     }
 
-    public String separateSpellDetails(Spell spell) {
+ /*   public String separateSpellDetails(Spell spell) {
         String str = "";
         String br = "</br>";
         String ss = "";
@@ -70,7 +70,7 @@ public class PrintService {
         str +=  spell.getDescription().replace(".", "</br>");
 
         return str;
-    }
+    }*/
 
     public String separateSpellDetailsStringBuilder(Spell spell, String spellName) {
         StringBuilder sb = new StringBuilder();
