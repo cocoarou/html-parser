@@ -31,6 +31,8 @@ public class SpellsController {
     @Autowired
     private SpellBookService spellBookService;
 
+    private final static String URL = "https://dungeonsanddragons.fandom.com/it/wiki/";
+
     // begin custom controllers for spells with a slash in the name
     @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
     @ResponseBody
@@ -41,7 +43,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+            Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
@@ -67,7 +69,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+            Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
@@ -93,7 +95,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+            Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
@@ -118,7 +120,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/" + spell).get();
+            Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
@@ -141,7 +143,7 @@ public class SpellsController {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
 
-            Document doc = Jsoup.connect("https://dungeonsanddragons.fandom.com/it/wiki/Tutti_Gli_Incantesimi_del_Gioco").get();
+            Document doc = Jsoup.connect(URL + "Tutti_Gli_Incantesimi_del_Gioco").get();
 
             SpellBook spellBook = spellBookService.setValuesByCssQuery(doc, "table td a");
 
