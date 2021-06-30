@@ -149,9 +149,8 @@ public class SpellsController {
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(spellBook);
 
-            return json;
+            return objectMapper.writer(prettyPrinter).writeValueAsString(spellBook);
 
         } catch (IOException e) {
             e.printStackTrace();
