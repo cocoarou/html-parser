@@ -57,6 +57,7 @@ public class PrintService {
         return gson.toJson(je);
     }
 
+    @Deprecated
  /*   public String separateSpellDetails(Spell spell) {
         String str = "";
         String br = "</br>";
