@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $.ajax({
-        url: 'http://localhost:8080/spells',
+        url: 'http://192.168.1.13:3000/spells',
         type: "GET",
         success: function(data) {
             // transform JSON file to js Object
