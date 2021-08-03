@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    console.log("url: ", window.location.href);
+    console.log("url for ajax: ", window.location.href);
     $.ajax({
         url: window.location.href + 'spells',
         type: "GET",
