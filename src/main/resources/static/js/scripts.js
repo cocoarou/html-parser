@@ -1,7 +1,7 @@
 $(document).ready(function() {
-
+    console.log("url: ", window.location.href);
     $.ajax({
-        url: 'http://192.168.1.13:3000/spells',
+        url: window.location.href + 'spells',
         type: "GET",
         success: function(data) {
             // transform JSON file to js Object
