@@ -58,20 +58,20 @@ public class PrintService {
     }
 
     @Deprecated
- /*   public String separateSpellDetails(Spell spell) {
-        String str = "";
-        String br = "</br>";
-        String ss = "";
+     public String separateSpellDetails(Spell spell) {
+            String str = "";
+            String br = "</br>";
+            String ss = "";
 
-        str +=  spell.getSchool() + "</br>" +
-                spell.getCastTime() + "</br>" +
-                spell.getRange() + "</br>" +
-                spell.getComponents() + "</br>" +
-                spell.getDuration() + "</br>";
-        str +=  spell.getDescription().replace(".", "</br>");
+            str +=  spell.getSchool() + "</br>" +
+                    spell.getCastTime() + "</br>" +
+                    spell.getRange() + "</br>" +
+                    spell.getComponents() + "</br>" +
+                    spell.getDuration() + "</br>";
+            str +=  spell.getDescription().replace(".", "</br>");
 
-        return str;
-    }*/
+            return str;
+        }
 
     public String separateSpellDetailsStringBuilder(Spell spell, String spellName) {
         StringBuilder sb = new StringBuilder();
