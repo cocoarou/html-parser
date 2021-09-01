@@ -78,6 +78,7 @@ public class PrintService {
             sb.append("<head>");
                 sb.append("<title>" + spellName + "</title>");
                 sb.append("<link rel=\"stylesheet\" href=\"/css/bootstrap.css\">");
+                sb.append("<link rel=\"stylesheet\" href=\"/css/search-bar.css\">");
             sb.append("</head>");
             sb.append("<body>");
                 sb.append("<div>");
