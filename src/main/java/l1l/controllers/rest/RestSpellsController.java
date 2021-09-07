@@ -21,16 +21,13 @@ import java.io.IOException;
 @RestController
 public class RestSpellsController {
 
+    private final static String URL = "https://dungeonsanddragons.fandom.com/it/wiki/";
     @Autowired
     private PrintService printService;
-
     @Autowired
     private SpellService spellService;
-
     @Autowired
     private SpellBookService spellBookService;
-
-    private final static String URL = "https://dungeonsanddragons.fandom.com/it/wiki/";
 
     // begin custom controllers for spells with a slash in the name
     @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
@@ -101,7 +98,7 @@ public class RestSpellsController {
     // end custom controllers for spells with a slash in the name
 
     @RequestMapping(value = "/spells/{spell}", method = RequestMethod.GET)
-    public String spell(@PathVariable (name = "spell") String spell) {
+    public String spell(@PathVariable(name = "spell") String spell) {
 
         try {
             Document doc = Jsoup.connect(URL + spell).get();
