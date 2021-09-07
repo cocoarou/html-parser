@@ -1,6 +1,6 @@
-package com.example.demo.services.impl;
+package l1l.services.impl;
 
-import com.example.demo.models.SpellBook;
+import l1l.models.SpellBook;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

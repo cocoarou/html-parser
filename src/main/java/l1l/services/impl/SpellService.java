@@ -1,11 +1,13 @@
-package com.example.demo.services.impl;
+package l1l.services.impl;
 
-import com.example.demo.models.Spell;
+import l1l.models.Spell;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -13,9 +15,9 @@ public class SpellService {
 
     public Spell setValuesById(Document doc, String id) {
         Spell spell = new Spell();
-        String str = "";
+        StringBuilder str = new StringBuilder();
 
-        String content = doc.getElementById(id).outerHtml();
+        String content = Objects.requireNonNull(doc.getElementById(id)).outerHtml();
         Document document = Jsoup.parse(content);
 
         Elements p = document.select("p");
@@ -42,11 +44,11 @@ public class SpellService {
             spell.setDuration(duration);
         }
 
-        for(Integer i = 1; i < p.size(); i++) {
-            str += p.get(i).text();
+        for(int i = 1; i < p.size(); i++) {
+            str.append(p.get(i).text());
         }
 
-        spell.setDescription(str);
+        spell.setDescription(str.toString());
 
         return spell;
     }

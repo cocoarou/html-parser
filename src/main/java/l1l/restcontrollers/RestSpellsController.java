@@ -1,26 +1,25 @@
-package com.example.demo.controllers;
+package l1l.restcontrollers;
 
-import com.example.demo.models.Spell;
-import com.example.demo.models.SpellBook;
-import com.example.demo.services.impl.PrintService;
-import com.example.demo.services.impl.SpellBookService;
-import com.example.demo.services.impl.SpellService;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import l1l.models.Spell;
+import l1l.models.SpellBook;
+import l1l.services.impl.PrintService;
+import l1l.services.impl.SpellBookService;
+import l1l.services.impl.SpellService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@Controller
-public class SpellsController {
+@RestController
+public class RestSpellsController {
 
     @Autowired
     private PrintService printService;
@@ -35,21 +34,17 @@ public class SpellsController {
 
     // begin custom controllers for spells with a slash in the name
     @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
-    @ResponseBody
     public String antipatiaSimpatia() {
 
         String spell = "Antipatia/Simpatia";
 
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
             Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
             return printService.separateSpellDetailsStringBuilder(s, spell);
 
@@ -61,21 +56,17 @@ public class SpellsController {
     }
 
     @RequestMapping(value = "/spells/Cecità/Sordità", method = RequestMethod.GET)
-    @ResponseBody
     public String cecitaSordita() {
 
         String spell = "Cecità/Sordità";
 
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
             Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
             return printService.separateSpellDetailsStringBuilder(s, spell);
 
@@ -87,21 +78,17 @@ public class SpellsController {
     }
 
     @RequestMapping(value = "/spells/Ingrandire/Ridurre", method = RequestMethod.GET)
-    @ResponseBody
     public String ingrandireRidurre() {
 
         String spell = "Ingrandire/Ridurre";
 
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
             Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
             return printService.separateSpellDetailsStringBuilder(s, spell);
 
@@ -114,19 +101,15 @@ public class SpellsController {
     // end custom controllers for spells with a slash in the name
 
     @RequestMapping(value = "/spells/{spell}", method = RequestMethod.GET)
-    @ResponseBody
     public String spell(@PathVariable (name = "spell") String spell) {
 
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-
             Document doc = Jsoup.connect(URL + spell).get();
 
             Spell s = spellService.setValuesById(doc, "mw-content-text");
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-            String json = objectMapper.writer(prettyPrinter).writeValueAsString(s);
 
             return printService.separateSpellDetailsStringBuilder(s, spell);
 
@@ -138,7 +121,6 @@ public class SpellsController {
     }
 
     @RequestMapping(value = "/spells", method = RequestMethod.GET)
-    @ResponseBody
     public String spellsList() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
