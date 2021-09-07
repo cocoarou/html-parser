@@ -1,4 +1,4 @@
-package l1l.restcontrollers;
+package l1l.controllers.rest;
 
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
