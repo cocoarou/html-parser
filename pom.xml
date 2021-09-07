@@ -11,7 +11,7 @@
     <groupId>l1l</groupId>
     <artifactId>html-parser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>html-parser-demo</name>
+    <name>html-parser</name>
     <description>Demo project for Spring Boot</description>
     <packaging>war</packaging>
 
