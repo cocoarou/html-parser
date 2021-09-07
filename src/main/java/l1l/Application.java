@@ -9,15 +9,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
-public class HtmlParserDemoApplication extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(HtmlParserDemoApplication.class);
+        return application.sources(Application.class);
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(HtmlParserDemoApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
