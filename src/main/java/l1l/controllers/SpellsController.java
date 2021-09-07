@@ -1,10 +1,10 @@
-package com.example.demo.controllers;
+package l1l.controllers;
 
-import com.example.demo.models.Spell;
-import com.example.demo.models.SpellBook;
-import com.example.demo.services.impl.PrintService;
-import com.example.demo.services.impl.SpellBookService;
-import com.example.demo.services.impl.SpellService;
+import l1l.models.Spell;
+import l1l.models.SpellBook;
+import l1l.services.impl.PrintService;
+import l1l.services.impl.SpellBookService;
+import l1l.services.impl.SpellService;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;

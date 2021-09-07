@@ -1,6 +1,6 @@
-package com.example.demo.services.impl;
+package l1l.services.impl;
 
-import com.example.demo.models.Spell;
+import l1l.models.Spell;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

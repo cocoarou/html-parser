@@ -1,6 +1,6 @@
-package com.example.demo.services.impl;
+package l1l.services.impl;
 
-import com.example.demo.models.Spell;
+import l1l.models.Spell;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
