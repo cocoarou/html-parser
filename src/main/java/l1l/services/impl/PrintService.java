@@ -50,13 +50,6 @@ public class PrintService {
 
     }
 
-    public String cleanJson(String json) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(json);
-        return gson.toJson(je);
-    }
-
     @Deprecated
      public String separateSpellDetails(Spell spell) {
             String str = "";
