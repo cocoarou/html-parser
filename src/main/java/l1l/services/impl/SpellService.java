@@ -23,7 +23,8 @@ public class SpellService {
         Elements p = document.select("p");
         Elements ul = document.select("ul");
 
-        spell.setSchool(p.get(0).text());
+        spell.setOriginalName(p.get(0).text());
+        spell.setSchool(p.get(1).text());
 
         if(ul.size() > 1) {
             // old layout
@@ -44,7 +45,7 @@ public class SpellService {
             spell.setDuration(duration);
         }
 
-        for(int i = 1; i < p.size(); i++) {
+        for(int i = 2; i < p.size(); i++) {
             str.append(p.get(i).text());
         }
 
