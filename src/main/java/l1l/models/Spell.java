@@ -12,5 +12,6 @@ public class Spell {
     private String components;
     private String duration;
     private String description;
+    private String originalName;
 
 }
