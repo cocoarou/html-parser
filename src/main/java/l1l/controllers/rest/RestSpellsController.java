@@ -5,9 +5,9 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import l1l.models.Spell;
 import l1l.models.SpellBook;
-import l1l.services.impl.PrintService;
-import l1l.services.impl.SpellBookService;
-import l1l.services.impl.SpellService;
+import l1l.services.interf.IPrintService;
+import l1l.services.interf.ISpellBookService;
+import l1l.services.interf.ISpellService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,11 @@ public class RestSpellsController {
 
     private final static String URL = "https://dungeonsanddragons.fandom.com/it/wiki/";
     @Autowired
-    private PrintService printService;
+    private IPrintService printService;
     @Autowired
-    private SpellService spellService;
+    private ISpellService spellService;
     @Autowired
-    private SpellBookService spellBookService;
+    private ISpellBookService spellBookService;
 
     // begin custom controllers for spells with a slash in the name
     @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)

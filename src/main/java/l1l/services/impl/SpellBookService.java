@@ -1,6 +1,7 @@
 package l1l.services.impl;
 
 import l1l.models.SpellBook;
+import l1l.services.interf.ISpellBookService;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SpellBookService {
+public class SpellBookService implements ISpellBookService {
 
     public SpellBook setValuesByCssQuery(Document doc, String cssQuery) {
         SpellBook spellBook = new SpellBook();

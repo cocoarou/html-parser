@@ -1,12 +1,13 @@
 package l1l.services.impl;
 
 import l1l.models.Spell;
+import l1l.services.interf.IPrintService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PrintService {
+public class PrintService implements IPrintService {
 
-    @Deprecated
+    @Override
     public String separateSpellDetails(Spell spell) {
             String str = "";
             String br = "</br>";
@@ -22,6 +23,7 @@ public class PrintService {
             return str;
         }
 
+    @Override
     public String separateSpellDetailsStringBuilder(Spell spell, String spellName) {
         StringBuilder sb = new StringBuilder();
             sb.append("<head>");
