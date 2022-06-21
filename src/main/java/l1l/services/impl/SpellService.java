@@ -2,7 +2,6 @@ package l1l.services.impl;
 
 import l1l.models.Spell;
 import l1l.services.interf.ISpellService;
-import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service
-@Slf4j
 public class SpellService implements ISpellService {
 
     public Spell setValuesById(Document doc, String id) {

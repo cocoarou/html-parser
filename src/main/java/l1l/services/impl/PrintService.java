@@ -10,8 +10,6 @@ public class PrintService implements IPrintService {
     @Override
     public String separateSpellDetails(Spell spell) {
             String str = "";
-            String br = "</br>";
-            String ss = "";
 
             str +=  spell.getSchool() + "</br>" +
                     spell.getCastTime() + "</br>" +
