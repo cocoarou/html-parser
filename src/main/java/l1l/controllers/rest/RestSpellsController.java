@@ -11,6 +11,7 @@ import l1l.services.interf.ISpellService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -146,7 +147,7 @@ public class RestSpellsController {
 
             return objectMapper.writer(prettyPrinter).writeValueAsString(spellBook);
 
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException | URISyntaxException | JSONException e) {
             e.printStackTrace();
         }
 
