@@ -9,11 +9,13 @@ $(document).ready(function() {
 
             // take the array inside the Object and assign it to js array
             var words = obj.spells;
+            var indices = obj.spellsId;
 
             // document.getElementById('results').innerHTML = "<a href='' >" + obj + "</a>"; --- JS
 
-            $.each(words, function(key, value) {                                          // --- jQuery
-                $('#results-ul').append("<li><a href='/spells/" + value + "' id='" + (key + 1) + "' >" + value + "</a></li>");
+            $.each(words, function(key, value) {
+                var index = indices[key];
+                $('#results-ul').append("<li><a href='/spells/" + index + "' id='" + (key + 1) + "' >" + value + "</a></li>");
             });
         }
     });
