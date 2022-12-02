@@ -8,5 +8,6 @@ import java.util.List;
 public class SpellBook {
 
     private List<String> spells;
+    private List<String> spellsId;
 
 }
