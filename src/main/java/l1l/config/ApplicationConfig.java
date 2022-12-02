@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 @ToString
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class ApplicationConfig {
 
 }
