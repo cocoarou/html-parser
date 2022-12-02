@@ -17,5 +17,4 @@ import org.springframework.context.annotation.Configuration;
 @AllArgsConstructor
 public class ApplicationConfig {
 
-
 }

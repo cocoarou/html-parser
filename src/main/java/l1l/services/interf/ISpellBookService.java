@@ -1,8 +1,8 @@
 package l1l.services.interf;
 
 import l1l.models.SpellBook;
-import org.jsoup.nodes.Document;
+import org.springframework.http.ResponseEntity;
 
 public interface ISpellBookService {
-    SpellBook setValuesByCssQuery(Document doc, String cssQuery);
+    SpellBook setValuesByApiCall(ResponseEntity<String> response);
 }

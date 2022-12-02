@@ -2,28 +2,20 @@ package l1l.services.impl;
 
 import l1l.models.SpellBook;
 import l1l.services.interf.ISpellBookService;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.w3c.dom.Document;
 
 @Service
+@Slf4j
 public class SpellBookService implements ISpellBookService {
 
-    public SpellBook setValuesByCssQuery(Document doc, String cssQuery) {
-        SpellBook spellBook = new SpellBook();
-        List<String> spells = new ArrayList<>();
+    @Override
+    public SpellBook setValuesByApiCall(ResponseEntity<String> response) {
+        log.info("response: {}", response.toString());
 
-        Elements elements = doc.select(cssQuery);
-        for (Element element : elements) {
-            spells.add(element.attr("title")/* + " " +  element.absUrl("href")*/);
-        }
-        spellBook.setSpells(spells);
-
-        return spellBook;
+        return null;
     }
 
 }

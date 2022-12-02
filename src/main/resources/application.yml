@@ -1,2 +1,8 @@
 server:
   port: 3000
+# ---
+api.url: https://www.dnd5eapi.co/api/
+api.url.spells: https://www.dnd5eapi.co/api/spells
+api.url.classes: https://www.dnd5eapi.co/api/classes
+api.url.features: https://www.dnd5eapi.co/api/features
+api.url.monsters: https://www.dnd5eapi.co/api/monsters
