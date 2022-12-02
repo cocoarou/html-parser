@@ -3,7 +3,6 @@ package l1l.controllers.rest;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import l1l.config.ApplicationConfig;
 import l1l.models.SpellBook;
 import l1l.services.interf.IPrintService;
 import l1l.services.interf.ISpellBookService;
@@ -18,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -39,77 +36,6 @@ public class RestSpellsController {
     private ISpellService spellService;
     @Autowired
     private ISpellBookService spellBookService;
-    @Autowired
-    private ApplicationConfig applicationConfig;
-
-    // begin custom controllers for spells with a slash in the name
-    @RequestMapping(value = "/spells/Antipatia/Simpatia", method = RequestMethod.GET)
-    public String antipatiaSimpatia() {
-
-        String spell = "Antipatia/Simpatia";
-
-        try {
-            // Document doc = Jsoup.connect(URL + spell).get();
-
-            // Spell s = spellService.setValuesById(doc, "mw-content-text");
-
-            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-
-            // return printService.separateSpellDetailsStringBuilder(s, spell);
-            return null;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "errore";
-    }
-
-    @RequestMapping(value = "/spells/Cecità/Sordità", method = RequestMethod.GET)
-    public String cecitaSordita() {
-
-        String spell = "Cecità/Sordità";
-
-        try {
-            // Document doc = Jsoup.connect(URL + spell).get();
-
-            // Spell s = spellService.setValuesById(doc, "mw-content-text");
-
-            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-
-            // return printService.separateSpellDetailsStringBuilder(s, spell);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "errore";
-    }
-
-    @RequestMapping(value = "/spells/Ingrandire/Ridurre", method = RequestMethod.GET)
-    public String ingrandireRidurre() {
-
-        String spell = "Ingrandire/Ridurre";
-
-        try {
-            // Document doc = Jsoup.connect(URL + spell).get();
-
-//            Spell s = spellService.setValuesById(doc, "mw-content-text");
-
-            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-
-//            return printService.separateSpellDetailsStringBuilder(s, spell);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return "errore";
-    }
-    // end custom controllers for spells with a slash in the name
 
     @RequestMapping(value = "/spells/{spell}", method = RequestMethod.GET)
     public String spell(@PathVariable(name = "spell") String spell) {
@@ -117,12 +43,10 @@ public class RestSpellsController {
         try {
             RestTemplate restTemplate = new RestTemplate();
             URI uri = new URI(URL_SPELLS + spell);
+            log.info("uri: {}", uri);
             ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
 
-            DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-            prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-
-//            return printService.separateSpellDetailsStringBuilder(s, spell);
+            return printService.printSpellDetails(response);
 
         } catch (Exception e) {
             e.printStackTrace();
