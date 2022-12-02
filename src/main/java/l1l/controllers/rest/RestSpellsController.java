@@ -115,9 +115,9 @@ public class RestSpellsController {
     public String spell(@PathVariable(name = "spell") String spell) {
 
         try {
-            // Document doc = Jsoup.connect(URL + spell).get();
-
-//            Spell s = spellService.setValuesById(doc, "mw-content-text");
+            RestTemplate restTemplate = new RestTemplate();
+            URI uri = new URI(URL_SPELLS + spell);
+            ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
 
             DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
             prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
