@@ -2,7 +2,6 @@ package l1l.services.impl;
 
 import l1l.models.SpellBook;
 import l1l.services.interf.ISpellBookService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -26,6 +25,15 @@ public class SpellBookService implements ISpellBookService {
                 .map(jsonObject -> {
                     try {
                         return (String) jsonObject.get("name");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .collect(Collectors.toList()), jsonObjects.stream()
+                .map(jsonObject -> {
+                    try {
+                        return (String) jsonObject.get("index");
                     } catch (JSONException e) {
                         e.printStackTrace();
                         return null;
