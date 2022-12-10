@@ -42,9 +42,7 @@ public class RestSpellsController {
 
         try {
             RestTemplate restTemplate = new RestTemplate();
-            URI uri = new URI(URL_SPELLS + spell);
-            log.info("uri: {}", uri);
-            ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+            ResponseEntity<String> response = restTemplate.getForEntity(new URI(URL_SPELLS + spell), String.class);
 
             return printService.printSpellDetails(response);
 
@@ -61,8 +59,7 @@ public class RestSpellsController {
             ObjectMapper objectMapper = new ObjectMapper();
 
             RestTemplate restTemplate = new RestTemplate();
-            URI uri = new URI(URL_SPELLS);
-            ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+            ResponseEntity<String> response = restTemplate.getForEntity(new URI(URL_SPELLS), String.class);
 
             SpellBook spellBook = spellBookService.setValuesByApiCall(response);
 
