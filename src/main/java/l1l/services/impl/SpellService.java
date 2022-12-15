@@ -115,21 +115,33 @@ public class SpellService implements ISpellService {
 
         Boolean ritual = (Boolean) json.get("ritual");
 
-        String material = (json.get("material") != null) ? (String) json.get("material") : "";
+        String material = "";
+        try {
+            material = (String) json.get("material");
+        } catch(JSONException e) {
+            log.warn("The spell has no material property");
+        }
 
         Integer level = (Integer) json.get("level");
+
         JSONObject damage = null;
         try {
             damage = (JSONObject) json.get("damage");
         } catch (JSONException e) {
-            log.error("The spell has no damage property");
+            log.warn("The spell has no damage property");
         }
 
         JSONObject damageTypeJson = (damage != null) ? (JSONObject) damage.get("damage_type") : null;
         String damageType = (damageTypeJson != null) ? (String) damageTypeJson.get("name") : "";
 
         Gson gson = new Gson();
-        Map<String, String> damageAtSlotLevel = (damage != null) ? gson.fromJson(damage.get("damage_at_slot_level").toString(), Map.class) : new HashMap<>();
+        Map<String, String> damageAtSlotLevel;
+        try {
+            damageAtSlotLevel = (damage != null) ? gson.fromJson(damage.get("damage_at_slot_level").toString(), Map.class) : new HashMap<>();
+        } catch (JSONException e) {
+            log.warn("The spell has no damage_at_slot_level property");
+            damageAtSlotLevel = new HashMap<>();
+        }
 
         return new Spell(school, castTime, range, components, duration, description, higherLevel, originalName, concentration, ritual, material, level, damageType, damageAtSlotLevel);
     }
