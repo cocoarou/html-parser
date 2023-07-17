@@ -22,6 +22,7 @@ import java.util.Objects;
 @Slf4j
 public class SpellService implements ISpellService {
 
+    @Deprecated
     public Spell setValuesById(Document doc, String id) {
         Spell spell = new Spell();
         StringBuilder str = new StringBuilder();
